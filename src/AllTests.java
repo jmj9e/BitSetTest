@@ -32,10 +32,9 @@ public class AllTests {
     @Test
     public void testMatchFilter() {
         List<Integer> bitLocs = BitSetMain.getBitLocs(filter);
-        Iterator<Integer> filterIterator = bitLocs.iterator();
 
-//        assertEquals(BitSetMain.matchFilter(filterIterator, allZeros), false);
-//        assertEquals(BitSetMain.matchFilter(filterIterator, allOnes), true);
-        assertEquals(BitSetMain.matchFilter(filterIterator, mixedOnesZeros), false);
+        assertEquals(BitSetMain.matchFilter(bitLocs, allZeros), false);
+        assertEquals(BitSetMain.matchFilter(bitLocs, allOnes), true);
+        assertEquals(BitSetMain.matchFilter(bitLocs, mixedOnesZeros), false);
     }
 }

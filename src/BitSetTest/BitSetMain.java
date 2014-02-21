@@ -1,5 +1,10 @@
 package BitSetTest;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Iterator;
@@ -13,40 +18,19 @@ public class BitSetMain {
     public static void main(String[] args) {
         BitSet bitFilter = fromString("1010001");
         List<BitSet> bits = new ArrayList<BitSet>();
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1000001"));
-        bits.add(fromString("1011111"));
-        bits.add(fromString("1110111"));
-        bits.add(fromString("1101001"));
+
+        File file = new File("bitsRun1.txt");
+        BufferedReader br;
+        try {
+            br = new BufferedReader(new FileReader(file));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                bits.add(fromString(line));
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         long startTime = System.nanoTime();
         List<BitSet> results = sparseBitFilter(bitFilter, bits);
