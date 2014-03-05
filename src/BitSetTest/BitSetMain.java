@@ -16,7 +16,7 @@ public class BitSetMain {
 	 * @param args
 	 */
     public static void main(String[] args) {
-        BitSet bitFilter = fromString("1010001");
+        BitSet bitFilter = fromString("1100000");
         List<BitSet> bits = new ArrayList<BitSet>();
 
         File file = new File("bitsRun1.txt");
@@ -36,9 +36,10 @@ public class BitSetMain {
         List<BitSet> results = sparseBitFilter(bitFilter, bits);
         long endTime = System.nanoTime();
         Iterator<BitSet> resultsIterator = results.iterator();
-        while (resultsIterator.hasNext()) {
-            System.out.println(toString(resultsIterator.next()));
-        }
+        System.out.println(results.size());
+//        while (resultsIterator.hasNext()) {
+//            System.out.println(toString(resultsIterator.next()));
+//        }
         System.out.println(endTime - startTime);
 	}
 
